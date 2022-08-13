@@ -1,0 +1,130 @@
+.promo {
+  margin: 0;
+  background: #dddee3;
+  display: flex;
+  padding: 75px 70px 75px 70px;
+}
+
+.promo__container {
+  display: flex;
+  width: 1140px;
+  margin: auto;
+  justify-content: space-between;
+
+  background: #dddee3;
+}
+
+.promo__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.promo__title {
+  font-family: Inter;
+  font-size: 50px;
+  font-weight: 400;
+  line-height: 58px;
+  letter-spacing: 0px;
+  text-align: left;
+  margin-bottom: 36px;
+  max-width: 640px;
+}
+
+.promo__subtitle {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: left;
+  mix-blend-mode: normal;
+  width: 310px;
+  opacity: 0.5;
+  margin-bottom: 146px;
+}
+
+.promo__button {
+  font-family: Inter;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0px;
+  display: flex;
+  align-items: center;
+  color: #000000;
+  max-width: 129px;
+  height: 36px;
+  border: 1px solid black;
+  border-radius: 3px;
+  padding: 9px 19px 9px 19px;
+  text-decoration: none;
+}
+
+@media screen and (max-width: 768px) {
+  .promo__container {
+    /* height: 710px; */
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    align-items: center;
+  }
+  .promo__title {
+    text-align: center;
+    font-family: Inter;
+    font-size: 40px;
+    font-weight: 400;
+    line-height: 50px;
+    letter-spacing: 0px;
+    text-align: center;
+    margin-bottom: 22px;
+  }
+  .promo__subtitle {
+    text-align: center;
+    font-family: Inter;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: center;
+    margin-bottom: 92px;
+  }
+  .promo__text {
+    align-items: center;
+    padding-top: 48px;
+  }
+
+  .promo {
+    padding: 140px 44px 76px 44px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .promo__text {
+    align-items: center;
+    padding-top: 0px;
+  }
+  .promo__logo {
+    width: 210px;
+    height: 206px;
+    margin-bottom: 44px;
+  }
+  .promo {
+    padding: 70px 10px 0px 10px;
+    height: 636px;
+  }
+  .promo__container {
+    margin: 0;
+    padding: 0;
+  }
+  .promo__title {
+    font-family: Inter;
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 38px;
+    letter-spacing: -0.04em;
+    text-align: center;
+  }
+  .promo__subtitle {
+    margin-bottom: 80px;
+  }
+}

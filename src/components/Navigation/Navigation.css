@@ -1,0 +1,27 @@
+.header__nav {
+  width: 231px;
+}
+.nav__list {
+  list-style: none;
+  display: flex;
+  column-gap: 20px;
+}
+
+.nav__link {
+  text-decoration: none;
+  font-size: 13px;
+  line-height: 18px;
+  font-weight: 400;
+  color: black;
+}
+
+.nav__link_active {
+  color: #ffffff;
+  font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+  .header__nav {
+    display: none;
+  }
+}

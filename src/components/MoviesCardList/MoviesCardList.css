@@ -1,0 +1,12 @@
+.movies-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 38px 20px;
+  padding: 80px 0px 29px;
+}
+@media screen and (max-width: 768px) {
+  .movies-list {
+    row-gap: calc(30px + (38 - 30) * ((100vw - 320px) / (768 - 320)));
+    column-gap: calc(30px + (20 - 30) * ((100vw - 320px) / (768 - 320)));
+  }
+}

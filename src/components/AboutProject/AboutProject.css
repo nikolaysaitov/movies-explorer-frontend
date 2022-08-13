@@ -1,0 +1,131 @@
+.project {
+  padding: 110px 70px 110px 70px;
+  margin: auto;
+}
+
+.project__container {
+  max-width: 1140px;
+}
+
+.project__title {
+  margin-bottom: 70px;
+}
+
+.title {
+  border-bottom: 1px solid black;
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: -0.04em;
+  padding-bottom: 23px;
+}
+
+.project__description {
+  display: flex;
+  justify-content: space-between;
+  gap: 57px 40px;
+  margin-bottom: 110px;
+}
+
+.project__description-column {
+  max-width: 550px;
+}
+
+.project__description-title {
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 24px;
+  letter-spacing: -0.04em;
+  text-align: left;
+  margin-bottom: 26px;
+}
+
+.project__description-text {
+  font-family: Inter;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: 0em;
+  text-align: left;
+}
+
+.project__progress {
+  display: grid;
+  grid-template-columns: minmax(100px, 1fr) 4fr;
+}
+
+.project__progress-column {
+  text-align: center;
+}
+
+.project__progress-bar {
+  padding: 9px 0;
+  min-height: 36px;
+  background: #f2f2f2;
+  margin-bottom: 14px;
+}
+
+.project__progress-bar_color_blue {
+  color: #ffff;
+  background: #3456f3;
+}
+
+.project__progress-title {
+  color: #8b8b8b;
+}
+
+@media screen and (max-width: 768px) {
+  .project {
+    padding: 90px 50px 90px 50px;
+  }
+  .project__description-text {
+    font-family: Inter;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 18px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .title {
+    font-family: Inter;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: -0.04em;
+    text-align: left;
+  }
+
+  .project__description-title {
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    margin-bottom: 16px;
+  }
+  .project__description-text {
+    font-family: Inter;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16px;
+    letter-spacing: 0em;
+    text-align: left;
+  }
+
+  .project__description {
+    flex-direction: column;
+    gap: 56px 40px;
+    margin-bottom: 60px;
+  }
+
+  .project {
+    padding: 70px 18px 70px 18px;
+  }
+  .title {
+    padding-bottom: 28px;
+  }
+  .project__title {
+    margin-bottom: 60px;
+  }
+}

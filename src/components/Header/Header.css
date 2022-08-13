@@ -1,0 +1,49 @@
+.header {
+  padding: 18px 0px;
+  background-color: #ffff;
+}
+
+.header__container {
+  padding: 0 70px;
+}
+
+.header__box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__button {
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 500;
+  padding: 8px 30px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.header__button_enter {
+  color: #ffff;
+  background: #3456f3;
+  border-radius: 3px;
+  width: 76px;
+  height: 32px;
+}
+
+@media screen and (min-width: 768px) {
+  .header__container {
+    padding: 0 70px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .header__container {
+    padding: 0 30px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .header__container {
+    padding: 0 14px;
+  }
+}
