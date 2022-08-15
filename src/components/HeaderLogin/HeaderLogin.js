@@ -1,21 +1,23 @@
+import { useContext } from "react";
+
 import { Link, useHistory } from "react-router-dom";
 import "./HeaderLogin.css";
 import logo from "../../images/logo.svg";
-import { useState } from "react";
 import AccountButton from "../AccountButton/AccountButton";
-import Navigation from "../Navigation/Navigation";
+// import Navigation from "../Navigation/Navigation";
+
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 
 function HeaderLogin({ setIsShowMenu }) {
   const currentPath = useHistory().location.pathname;
   const isMainPage = currentPath === "/";
-  const [isLoggedIn] = useState(false);
   const history = useHistory();
-
+  const { isLoggedIn } = useContext(CurrentUserContext);
   function handleClick() {
     history.push("/");
   }
 
-  const signButtons = !isLoggedIn ? (
+  const signButtons = isLoggedIn ? (
     <AccountButton />
   ) : (
     <div className="header__navigation">
@@ -27,6 +29,7 @@ function HeaderLogin({ setIsShowMenu }) {
       </Link>
     </div>
   );
+
   function handleClickMenuButton() {
     setIsShowMenu(true);
   }
@@ -44,9 +47,9 @@ function HeaderLogin({ setIsShowMenu }) {
             alt="Логотип"
             onClick={handleClick}
           />
-          {isLoggedIn && <Navigation />}
+          {/* {isLoggedIn && <Navigation />} */}
           {signButtons}
-          {!isLoggedIn && (
+          {isLoggedIn && (
             <div
               className="header__menu-button"
               onClick={handleClickMenuButton}
