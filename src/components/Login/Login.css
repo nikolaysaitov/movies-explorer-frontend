@@ -105,4 +105,15 @@
   .form__submit {
     margin-top: 157px;
   }
+  .form__logo {
+    align-self: center;
+    margin-bottom: 50px;
+  }
+  .form__header {
+    align-self: center;
+    margin-bottom: 80px;
+  }
+  .form__submit-login{
+    margin-top: 267px;
+  }
 }

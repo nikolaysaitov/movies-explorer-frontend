@@ -118,7 +118,7 @@ function App() {
         </main>
 
         <Switch>
-          <Route path="/">
+          <Route exact path="/">
             <Footer />
           </Route>
 

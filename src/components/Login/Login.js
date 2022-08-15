@@ -58,7 +58,7 @@ function Login(props) {
             maxLength="15"
           />
           <span className=""></span>
-          <button type="submit" className="form__submit">
+          <button type="submit" className="form__submit form__submit-login">
             Войти
           </button>
           <p className="authorization__text">
