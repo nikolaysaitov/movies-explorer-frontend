@@ -47,9 +47,8 @@ function App() {
   }
 
   return (
-    
-      <CurrentUserContext.Provider value={{ isLoggedIn }}>
-        <React.Fragment>
+    <CurrentUserContext.Provider value={{ isLoggedIn }}>
+      <React.Fragment>
         <Switch>
           <Route path="/" exact>
             <HeaderLogin />
@@ -131,63 +130,10 @@ function App() {
             <Footer />
           </Route>
         </Switch>
-        </React.Fragment>
-        <Menu isShowMenu={isShowMenu} setIsShowMenu={setIsShowMenu} />
-      </CurrentUserContext.Provider>
-    
+      </React.Fragment>
+      <Menu isShowMenu={isShowMenu} setIsShowMenu={setIsShowMenu} />
+    </CurrentUserContext.Provider>
   );
-  // return (
-  //   <>
-  //     <CurrentUserContext.Provider value={{ isLoggedIn }}>
-  //       <Switch>
-  //         <Route path="/" exact>
-  //           <HeaderLogin/>
-  //           <Main />
-  //           <Footer />
-  //         </Route>
-
-  //         <Route path="/movies">
-  //           <HeaderLogin  isLoggedIn={isLoggedIn} setIsShowMenu={setIsShowMenu} />
-  //           <Movies />
-
-  //           <Footer />
-  //         </Route>
-
-  //         <Route path="/saved-movies">
-  //           <HeaderLogin isLoggedIn={isLoggedIn} setIsShowMenu={setIsShowMenu} />
-  //           <SavedMovies />
-  //           <Footer />
-  //         </Route>
-
-  //         <Route path="/profile">
-  //           <HeaderLogin setIsShowMenu={setIsShowMenu} />
-  //           <Profile
-  //             isLoggedIn={isLoggedIn}
-  //             handleLogin={handleLogin}
-  //             onExit={handleExit}
-  //           />
-  //         </Route>
-
-  //         <Route path="/signup">
-  //           <Register
-  //             isReg={isReg}
-  //             handleLogin={handleLogin}
-  //             onSubmit={handleRegisterSubmit}
-  //           />
-  //         </Route>
-
-  //         <Route path="/signin" exact>
-  //           <Login handleLogin={handleLogin} onSubmit={handleLoginSubmit} />
-  //         </Route>
-
-  //         <Route path="/*">
-  //           <NotFound404 />
-  //         </Route>
-  //       </Switch>
-  //       <Menu isShowMenu={isShowMenu} setIsShowMenu={setIsShowMenu} />
-  //     </CurrentUserContext.Provider>
-  //   </>
-  // );
 }
 
 export default App;
