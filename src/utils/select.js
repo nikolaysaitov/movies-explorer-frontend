@@ -7,13 +7,13 @@ function formatSelectedFilms(films) {
   }))
 }
 
-function setSelect(films, selectedFilms) {
+function setSelect(films, likedFilms) {
   return films.map(film => {
       let isSelect = false
       let _id = null
-      // selectedFilms = [];
+      // likedFilms = [];
 
-      selectedFilms.forEach(selectedFilm => {
+      likedFilms.forEach(selectedFilm => {
           isSelect = film.id === selectedFilm.movieId
           if (isSelect) _id = selectedFilm._id
       })

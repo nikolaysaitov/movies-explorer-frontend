@@ -25,7 +25,7 @@ function Movies({
   const [queryValues, setQueryValues] = useState(null);
   const [shownFilms, setShownFilms] = useState(null);
   const [filtredFilms, setFiltredFilms] = useState(null);
-  const [selectedFilms, setSelectedFilms] = useState(null);
+  const [likedFilms, setLikedFilms] = useState(null);
   const { countAddFilms, startCountFilms, setParamsCountFilms } = useCountCard(
     CARD_COUNT,
     CARD_BRAKEPOINT
@@ -39,24 +39,23 @@ function Movies({
   }, []);
 
   useEffect(() => {
-    if (selectedFilms && !isLoading) {
+    if (likedFilms && !isLoading) {
       loadFilmsLocal();
     }
-  }, [selectedFilms, isLoading]);
+  }, [likedFilms, isLoading]);
 
   useEffect(() => {
     if (allFilms?.length && queryValues) {
       const films = filterFilms(allFilms, SHORT_DURATION, queryValues);
       saveFilmsLocal(films);
       setFiltredFilms(films);
-
       films?.length ? hideErrorMessage() : showErrorMessage(MESSAGES.NOT_FOUND);
     }
   }, [allFilms, queryValues]);
 
   useEffect(() => {
     if (filtredFilms?.length) {
-      const films = setSelect(filtredFilms, selectedFilms);
+      const films = setSelect(filtredFilms, likedFilms);
       setShownFilms([...films.slice(0, startCountFilms)]);
     }
   }, [filtredFilms, startCountFilms]);
@@ -65,7 +64,7 @@ function Movies({
     startLoader();
     likeSelectFilms()
       .then((films) => {
-        setSelectedFilms(formatSelectedFilms(films));
+        setLikedFilms(formatSelectedFilms(films));
         hideErrorMessage();
       })
       .catch(() => {
@@ -78,12 +77,27 @@ function Movies({
   function setCountViewFilms() {
     setParamsCountFilms("all");
   }
+
   function addResizeEvent() {
     window.addEventListener("resize", setParamsCountFilms);
   }
+
   function removeResizeEvent() {
     window.removeEventListener("resize", setParamsCountFilms);
   }
+
+  function startLoader() {
+    setIsLoading(true);
+  }
+
+  function hideErrorMessage() {
+    setErrorMessage(null);
+  }
+
+  function showErrorMessage(message) {
+    setErrorMessage(message);
+  }
+
   function loadFilmsLocal() {
     const localFilms = filmsLocal.load();
     setFiltredFilms(localFilms);
@@ -92,18 +106,13 @@ function Movies({
     filmsLocal.save(films);
   }
 
-  function startLoader() {
-    setIsLoading(true);
-  }
-  function hideErrorMessage() {
-    setErrorMessage(null);
-  }
-  function showErrorMessage(message) {
-    setErrorMessage(message);
-  }
-
   function stopLoader() {
     setIsLoading(false);
+  }
+
+  function searchFilms(values) {
+    if (!allFilms?.length) showAllFilms();
+    setQueryValues(values);
   }
 
   function showAllFilms() {
@@ -121,19 +130,11 @@ function Movies({
       });
   }
 
-  function searchFilms(values) {
-    if (!allFilms?.length) showAllFilms();
-    setQueryValues(values);
-  }
-
   function showMoreFilms() {
     const startIndex = shownFilms.length;
     const endIndex = startIndex + countAddFilms;
 
-    setShownFilms([
-      ...shownFilms,
-      ...filtredFilms.slice(startIndex, endIndex),
-    ]);
+    setShownFilms([...shownFilms, ...filtredFilms.slice(startIndex, endIndex)]);
   }
 
   return (

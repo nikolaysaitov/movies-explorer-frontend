@@ -10,9 +10,8 @@ function SavedMovies({
   handleLikeSelectButton,
   searchQuerySavedMoviesLocal,
 }) {
-  const [selectedFilms, setSelectedFilms] = useState(null);
+  const [likedFilms, setLikedFilms] = useState(null);
   const [shownFilms, setShownFilms] = useState(null);
-
   const [errorMessage, setErrorMessage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -36,7 +35,7 @@ function SavedMovies({
   }
 
   function searchFilms(values) {
-    const films = filterFilms(selectedFilms, SHORT_DURATION, values);
+    const films = filterFilms(likedFilms, SHORT_DURATION, values);
     setShownFilms(films);
 
     films?.length ? hideErrorMessage() : showErrorMessage(MESSAGES.NOT_FOUND);
@@ -44,12 +43,12 @@ function SavedMovies({
 
   function handleDeleteFilm(filmId) {
     handleLikeSelectButton(filmId).then(() =>
-      setAllFilms(selectedFilms.filter((film) => film._id !== filmId))
+      setAllFilms(likedFilms.filter((film) => film._id !== filmId))
     );
   }
 
   function setAllFilms(films) {
-    setSelectedFilms(films);
+    setLikedFilms(films);
     setShownFilms(films);
   }
 
