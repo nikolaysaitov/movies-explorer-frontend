@@ -1,9 +1,9 @@
 export const optionsMainApi = {
-  baseUrl: 'https://api.kino.nomoredomains.sbs',
+  baseUrl: "https://api.kino.nomoredomains.sbs",
   headers: {
-      'Content-Type': 'application/json'
-  }
-}
+    "Content-Type": "application/json",
+  },
+};
 export const optionsMoviesApi = {
   baseUrl: "https://api.nomoreparties.co/beatfilm-movies",
   headers: {

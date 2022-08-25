@@ -66,7 +66,6 @@
 //   }).then(checkResponse);
 // };
 
-
 // export const checkToken = (jwt) => {
 //   return fetch(`${BASE_URL}/users/me`, {
 //     method: "GET",
@@ -79,60 +78,57 @@
 // };
 export default class MainApi {
   constructor(options) {
-      this._baseUrl = options.baseUrl
-      this._headers = options.headers
+    this._baseUrl = options.baseUrl;
+    this._headers = options.headers;
   }
 
   _fetch(path, method, body, token) {
-      const url = this._baseUrl + path
-      return fetch(url, {
-          method,
-          headers: {
-              ...this._headers,
-              authorization: token ? `Bearer ${token}` : ''
-          },
-          body
-      })
-          .then(res => {
-              return res.ok
-                  ? res.json()
-                  : Promise.reject(`Ошибка: ${res.status}`)
-          })
+    const url = this._baseUrl + path;
+    return fetch(url, {
+      method,
+      headers: {
+        ...this._headers,
+        authorization: token ? `Bearer ${token}` : "",
+      },
+      body,
+    }).then((res) => {
+      return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`);
+    });
   }
 
   register(user) {
-      const body = JSON.stringify(user)
-      return this._fetch('/signup', 'POST', body)
+    const body = JSON.stringify(user);
+    return this._fetch("/signup", "POST", body);
   }
 
   authorize(user) {
-      const body = JSON.stringify(user)
-      return this._fetch('/signin', 'POST', body)
+    const body = JSON.stringify(user);
+    return this._fetch("/signin", "POST", body);
   }
 
   editProfile(user, token) {
-      const body = JSON.stringify(user)
-      return this._fetch('/users/me', 'PATCH', body, token)
+    const body = JSON.stringify(user);
+    return this._fetch("/users/me", "PATCH", body, token);
   }
 
   getProfile(token) {
-      return this._fetch('/users/me', 'GET', null, token)
+    return this._fetch("/users/me", "GET", null, token);
   }
 
   fetchSelectFilms(token) {
-      return this._fetch('/movies', 'GET', null, token)
+    return this._fetch("/movies", "GET", null, token);
   }
 
   addSelectFilm(film, token) {
-      const body = JSON.stringify(film)
-      return this._fetch('/movies', 'POST', body, token)
+    const body = JSON.stringify(film);
+    return this._fetch("/movies", "POST", body, token);
   }
 
   deleteSelectFilm(filmId, token) {
-      return this._fetch(`/movies/${filmId}`, 'DELETE', null, token)
+    return this._fetch(`/movies/${filmId}`, "DELETE", null, token);
   }
 
   checkToken(token) {
-    return this._fetch('/users/me', 'GET', null, token)
-}
+    return this._fetch("/users/me", "GET", null, token);
+  }
 }
