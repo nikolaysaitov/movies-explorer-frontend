@@ -1,32 +1,20 @@
 import React from "react";
+import { useValidationForm } from "../../utils/useValidationForm";
 import { withRouter, Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import "../Register/Register.css";
+import ValidText from "../ValidText/ValidText";
+import { VALIDATION_CONFIGS } from "../../utils/constans";
 
-function Register(props) {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
-  const [name, setName] = React.useState("");
-
-  function handleChangeName(e) {
-    setName(e.target.value);
-  }
-  function handleChangeEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  function handleChangePassword(e) {
-    setPassword(e.target.value);
-  }
+function Register({ handleRegisterSubmit, isDisabled }) {
+  const { values, errors, isValid, handleChange } = useValidationForm(
+    { name: "", email: "", password: "" },
+    VALIDATION_CONFIGS.USER_DATA
+  );
 
   function handleSubmit(e) {
     e.preventDefault();
-
-    if (!email || !password) {
-      return;
-    }
-
-    props.onSubmit(email, password);
+    handleRegisterSubmit(values);
   }
   return (
     <div className="container form__container">
@@ -36,16 +24,16 @@ function Register(props) {
         <form onSubmit={handleSubmit} className="form__register ">
           <p className="form__text">Имя</p>
           <input
-            type="name"
             name="name"
             placeholder="Имя"
             className="form__input"
             required
             id="name-input"
-            value={name}
-            setValue={setName}
-            onChange={handleChangeName}
+            onInput={handleChange}
+            isValid={!errors.name}
+            value={values.name}
           />
+          {errors.name && <ValidText type="auth">{errors.name}</ValidText>}
           <p className="form__text">Email</p>
           <input
             type="email"
@@ -54,10 +42,11 @@ function Register(props) {
             className="form__input"
             required
             id="email-input"
-            value={email}
-            setValue={setEmail}
-            onChange={handleChangeEmail}
+            onInput={handleChange}
+            isValid={!errors.email}
+            value={values.email}
           />
+          {errors.email && <ValidText type="auth">{errors.email}</ValidText>}
           <p className="form__text">Пароль</p>
           <input
             type="password"
@@ -66,14 +55,21 @@ function Register(props) {
             className="form__input"
             required
             id="password-input"
-            value={password}
-            setValue={setPassword}
-            onChange={handleChangePassword}
-            minLength="6"
-            maxLength="15"
+            onInput={handleChange}
+            isValid={!errors.password}
+            value={values.password}
           />
+          {errors.password && (
+            <ValidText type="auth">{errors.password}</ValidText>
+          )}
           <span className=""></span>
-          <button type="submit" className="form__submit">
+          <button
+            type="submit"
+            className={
+              !isValid ? "form__submit form__submit-off" : "form__submit"
+            }
+            disabled={isDisabled}
+          >
             Зарегистрироваться
           </button>
           <p className="authorization__text">

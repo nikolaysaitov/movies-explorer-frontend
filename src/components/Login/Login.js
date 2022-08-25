@@ -1,36 +1,27 @@
 import React from "react";
-
+import { useValidationForm } from "../../utils/useValidationForm";
 import { withRouter, Link } from "react-router-dom";
 import logo from "../../images/logo.svg";
 import "./Login.css";
+import { VALIDATION_CONFIGS } from "../../utils/constans";
+import ValidText from "../ValidText/ValidText";
 
-function Login(props) {
-  const [email, setEmail] = React.useState("");
-  const [password, setPassword] = React.useState("");
+function Login({ handleLoginSubmit, isDisabled }) {
+  const { values, errors, isValid, handleChange } = useValidationForm(
+    { email: "", password: "" },
+    VALIDATION_CONFIGS.LOGIN
+  );
 
-  function handleChangeEmail(e) {
-    setEmail(e.target.value);
-  }
-
-  function handleChangePassword(e) {
-    setPassword(e.target.value);
-  }
-
-  function handleSubmit(e) {
+  function handleSubmitForm(e) {
     e.preventDefault();
-
-    if (!email || !password) {
-      return;
-    }
-
-    props.onSubmit(email, password);
+    handleLoginSubmit(values);
   }
   return (
     <div className="container form__container">
       <div className="form__hello">
         <img className="form__logo" src={logo} alt="Логотип" />
         <h1 className="form__header">Рады видеть!</h1>
-        <form onSubmit={handleSubmit} className="form__register ">
+        <form onSubmit={handleSubmitForm} className="form__register ">
           <p className="form__text">Email</p>
           <input
             type="email"
@@ -39,10 +30,11 @@ function Login(props) {
             className="form__input"
             required
             id="email-input"
-            value={email}
-            setValue={setEmail}
-            onChange={handleChangeEmail}
+            onInput={handleChange}
+            isValid={!errors.email}
+            value={values.email}
           />
+          {errors.email && <ValidText type="auth">{errors.email}</ValidText>}
           <p className="form__text">Пароль</p>
           <input
             type="password"
@@ -51,15 +43,26 @@ function Login(props) {
             className="form__input"
             required
             id="password-input"
-            value={password}
-            setValue={setPassword}
-            onChange={handleChangePassword}
+            onInput={handleChange}
+            isValid={!errors.password}
+            value={values.password}
             minLength="6"
             maxLength="15"
           />
+          {errors.password && (
+            <ValidText type="auth">{errors.password}</ValidText>
+          )}
           <span className=""></span>
-          <button type="submit" className="form__submit form__submit-login">
-            Войти
+          <button
+            type="submit"
+            className={
+              !isValid
+                ? "form__submit form__submit-login form__submit-off"
+                : "form__submit form__submit-login"
+            }
+            disabled={isDisabled}
+          >
+            > Войти
           </button>
           <p className="authorization__text">
             Еще не зарегистрированы?

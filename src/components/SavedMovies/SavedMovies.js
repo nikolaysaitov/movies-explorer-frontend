@@ -1,27 +1,87 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./SavedMovies.css";
 import SearchForm from "../../components/SearchForm/SearchForm";
 import MoviesCardList from "../../components/MoviesCardList/MoviesCardList";
+import { MESSAGES, SHORT_DURATION } from "../../utils/constans";
+import { filterFilms } from "../../utils/filterFilms";
 
-function SavedMovies() {
-  const [isShortFilm, setIsShortFilm] = useState(true);
-  const [searchQuery, setSearchQuery] = useState("");
+function SavedMovies({
+  likeSelectFilms,
+  handleLikeSelectButton,
+  searchQuerySavedMoviesLocal,
+}) {
+  const [selectedFilms, setSelectedFilms] = useState(null);
+  const [shownFilms, setShownFilms] = useState(null);
 
-  const searchFilms = (evt) => {
-    evt.preventDefault();
-    console.log(isShortFilm, searchQuery);
-  };
+  const [errorMessage, setErrorMessage] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    getSelectFilms();
+  }, []);
+
+  function getSelectFilms() {
+    startLoader();
+    likeSelectFilms()
+      .then((films) => {
+        setAllFilms(films); /// добавил data, иначе не рендерятся сохраненные фильмы
+        hideErrorMessage();
+      })
+      .catch(() => {
+        showErrorMessage(MESSAGES.ERROR);
+      })
+      .finally(() => {
+        stopLoader();
+      });
+  }
+
+  function searchFilms(values) {
+    const films = filterFilms(selectedFilms, SHORT_DURATION, values);
+    setShownFilms(films);
+
+    films?.length ? hideErrorMessage() : showErrorMessage(MESSAGES.NOT_FOUND);
+  }
+
+  function handleDeleteFilm(filmId) {
+    handleLikeSelectButton(filmId).then(() =>
+      setAllFilms(selectedFilms.filter((film) => film._id !== filmId))
+    );
+  }
+
+  function setAllFilms(films) {
+    setSelectedFilms(films);
+    setShownFilms(films);
+  }
+
+  function startLoader() {
+    setIsLoading(true);
+  }
+
+  function stopLoader() {
+    setIsLoading(false);
+  }
+
+  function showErrorMessage(message) {
+    setErrorMessage(message);
+  }
+
+  function hideErrorMessage() {
+    setErrorMessage(null);
+  }
+
   return (
     <div className="saved">
       <div className="container movies__container">
         <SearchForm
-          isShortFilm={isShortFilm}
-          searchQuery={searchQuery}
-          setIsShortFilm={setIsShortFilm}
-          setSearchQuery={setSearchQuery}
           searchFilms={searchFilms}
+          searchQueryLocal={searchQuerySavedMoviesLocal}
         />
-        <MoviesCardList />
+        <MoviesCardList
+          films={shownFilms}
+          isLoading={isLoading}
+          message={errorMessage}
+          handleLikeSelectButton={handleDeleteFilm}
+        />
       </div>
     </div>
   );

@@ -79,6 +79,10 @@
   padding-bottom: 16px;
   cursor: pointer;
 }
+.profile__button_off {
+  opacity: 0.4;
+  cursor: default;
+}
 
 .profile__button_color_red {
   color: #ee3465;

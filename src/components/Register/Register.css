@@ -72,6 +72,10 @@
   margin-bottom: 16px;
   cursor: pointer;
 }
+.form__submit-off {
+  opacity: 0.4;
+  cursor: default;
+}
 .authorization__text {
   align-self: center;
   color: #a0a0a0;
