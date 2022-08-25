@@ -1,3 +1,4 @@
+## [Ссылка на пул-реквест](https://github.com/nikolaysaitov/movies-explorer-frontend/pull/2)
 
 
 ## [Домен Фронтенда](https://kino.nomoredomains.sbs/)
