@@ -1,6 +1,6 @@
 export const optionsMainApi = {
-  // baseUrl: "https://api.kino.nomoredomains.sbs",
-  baseUrl: "http://localhost:3000",
+  baseUrl: "https://api.kino.nomoredomains.sbs",
+  // baseUrl: "http://localhost:3000",
   headers: {
     "Content-Type": "application/json",
   },
