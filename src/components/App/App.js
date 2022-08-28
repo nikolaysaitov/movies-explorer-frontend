@@ -18,6 +18,7 @@ import ProtectedRoute from "../../components/ProtectedRoute/ProtectedRoute";
 import { optionsMainApi, optionsMoviesApi } from "../../utils/MoviesApi";
 import MoviesApi from "../../utils/MoviesApi";
 import LocalStorage from "../../utils/LocalStorage";
+import Alarm from "../Alarm/Alarm";
 import { DANGER_MESSAGES } from "../../utils/constans";
 
 function App() {
@@ -34,11 +35,11 @@ function App() {
   const filmsLocal = new LocalStorage("films");
   const searchQueryMoviesLocal = new LocalStorage("search-query-movies", {
     film: "",
-    short: false,
+    shortFilmCheckbox: false,
   });
   const searchQuerySavedMoviesLocal = new LocalStorage(
     "search-query-saved-movies",
-    { film: "", short: false }
+    { film: "", shortFilmCheckbox: false }
   );
   const [isPreloader, setIsPreloader] = useState(true);
   const [messageAlarm, setMessageAlarm] = useState(null);
@@ -83,6 +84,7 @@ function App() {
   //ОЧИСТКА
   function clearLocal() {
     jwtLocal.delete();
+    filmsLocal.delete();
     searchQueryMoviesLocal.delete();
     searchQuerySavedMoviesLocal.delete();
   }
@@ -90,8 +92,10 @@ function App() {
   // КНОПКА ВЫХОДА
   function handleExit() {
     setIsLoggedIn(false);
+    localStorage.removeItem("jwt");
+    setCurrentUser({});
     clearLocal();
-    history.push("/signin");
+    history.push("/");
   }
 
   function handleLogin() {
@@ -118,22 +122,32 @@ function App() {
   }
 
   //РЕГИСТРАЦИЯ
+  // function handleRegisterSubmit({ name, email, password }) {
+  //   mainApi
+  //     .register({ name, email, password })
+  //     .then((res) => {
+  //       if (res) {
+  //         setIsReg(true);
+  //         history.push("/signin");
+  //       } else {
+  //         setIsReg(false);
+  //         console.log("else");
+  //       }
+  //     })
+  //     .catch((err) => {
+  //       console.log(`Ошибка входа ${err}`);
+  //       setIsReg(false);
+  //     });
+  // }
+
   function handleRegisterSubmit({ name, email, password }) {
     mainApi
       .register({ name, email, password })
-      .then((res) => {
-        if (res) {
-          setIsReg(true);
-          history.push("/signin");
-        } else {
-          setIsReg(false);
-          console.log("else");
-        }
+      .then(() => {
+        handleLoginSubmit({ email, password });
       })
-      .catch((err) => {
-        console.log(`Ошибка входа ${err}`);
-        setIsReg(false);
-      });
+      .catch(() => {})
+      .finally(() => {});
   }
 
   useEffect(() => {
@@ -158,15 +172,19 @@ function App() {
   }, []);
 
   //ОБНОВЛЕНИЕ ДАННЫХ ПОЛЬЗОВАТЕЛЯ
-  const handleUpdateUser = (name, email) => {
+  function handleUpdateUser(name, email) {
     const token = localStorage.getItem("jwt");
     mainApi
       .editProfile(name, email, token)
       .then((item) => {
         setCurrentUser(item);
+        showDanger(DANGER_MESSAGES.SUCCESSFULLY.UPDATE_PROFILE);
       })
+      
       .catch((err) => console.log(`Ошибка ${err}`));
-  };
+  }
+
+
   //ПРОВЕРКА ТОКЕНА ПОЛЬЗОВАТЕЛЯ
   function handleTokenCheck() {
     const jwt = localStorage.getItem("jwt");
@@ -187,8 +205,7 @@ function App() {
         <React.Fragment>
           <Switch>
             <Route path="/" exact>
-              <HeaderLogin 
-              setIsShowMenu={setIsShowMenu}/>
+              <HeaderLogin setIsShowMenu={setIsShowMenu} />
             </Route>
 
             <Route path="/movies">
@@ -250,10 +267,12 @@ function App() {
                 isLoggedIn={isLoggedIn}
                 currentUser={currentUser}
                 handleUpdateUser={handleUpdateUser}
+                handleExit={handleExit}
+                setCurrentUser={setCurrentUser}
               />
 
               <Route path="/saved-movies">
-                <Profile isLoggedIn={isLoggedIn} onExit={handleExit} />
+                <Profile isLoggedIn={isLoggedIn} />
               </Route>
 
               <Route path="/signup">
@@ -294,7 +313,12 @@ function App() {
           </Switch>
         </React.Fragment>
         <Menu isShowMenu={isShowMenu} setIsShowMenu={setIsShowMenu} />
+        <Alarm
+        messageAlarm={messageAlarm}
+        isActiveAlarm={isActiveAlarm}
+      />
       </CurrentUserContext.Provider>
+
     </>
   );
 }

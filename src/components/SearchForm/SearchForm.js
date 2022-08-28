@@ -4,9 +4,10 @@ import { useValidationForm } from "../../utils/useValidationForm";
 import ValidText from "../ValidText/ValidText";
 
 function SearchForm({ searchFilms, searchQueryLocal }) {
-  const startValue = { film: "", short: false };
+  const startValue = { film: " ", shortFilmCheckbox: false };
   const { values, isValid, handleChange, setValues, setIsValid } =
     useValidationForm(startValue);
+    
   const [isSearchError, setIsSearchError] = useState(false);
 
   useEffect(() => {
@@ -16,8 +17,9 @@ function SearchForm({ searchFilms, searchQueryLocal }) {
   }, []);
 
   function onChangeCheckbox(evt) {
-    const newValues = { ...values, short: evt.target.checked };
+    const newValues = { ...values, shortFilmCheckbox: evt.target.checked };
     handleChange(evt);
+
     searchFilms(newValues);
     searchQueryLocal.save(newValues);
   }
@@ -25,7 +27,7 @@ function SearchForm({ searchFilms, searchQueryLocal }) {
   function handleSubmitForm(evt) {
     evt.preventDefault();
     searchQueryLocal.save(values);
-    if (!isValid) {
+    if (values.film === '') {
       setIsSearchError(true);
     } else {
       setIsSearchError(false);
@@ -36,15 +38,15 @@ function SearchForm({ searchFilms, searchQueryLocal }) {
   return (
     <section className="search">
       <div className="container search__container">
-        <form className="forms-search" onSubmit={handleSubmitForm} noValidate>
+        <form className="forms-search" onSubmit={handleSubmitForm}>
           <input
             className="forms-search__input"
             name="film"
             type="text"
             placeholder="Фильм"
-            value={values.film}
+            value={values.film || ''}
             onInput={handleChange}
-            required
+            // required={true}
           />
           <button className="forms-search__button" type="submit">
             Поиск
@@ -56,9 +58,9 @@ function SearchForm({ searchFilms, searchQueryLocal }) {
         <label className="forms-search__label">
           <input
             className="forms-search__checkbox"
-            name="short"
+            name="shortFilmCheckbox"
             type="checkbox"
-            checked={values.short}
+            checked={values.shortFilmCheckbox}
             onChange={onChangeCheckbox}
           />
           <div className="forms-search__custom-checkbox">

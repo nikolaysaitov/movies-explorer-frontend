@@ -1,7 +1,8 @@
 const VALIDATION_PARAMS = {
   REGEX: {
     NAME: /^[a-zа-яё-\s]+$/i,
-    EMAIL: /[^@\s]+@[^@\s]+\.[^@\s]+/i,
+    EMAIL: /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i,
+
   },
   MESSAGES: {
     NAME: 'Имя должно содержать только буквы, пробелы и "-"',
@@ -41,7 +42,7 @@ const MESSAGES = {
 
 const CARD_COUNT = {
   SMALL_DEVICE: {
-    ADD: 1,
+    ADD: 2,
     START: 5,
   },
   MIDDLE_DEVICE: {
@@ -49,7 +50,7 @@ const CARD_COUNT = {
     START: 8,
   },
   BIG_DEVICE: {
-    ADD: 4,
+    ADD: 3,
     START: 12,
   },
 };

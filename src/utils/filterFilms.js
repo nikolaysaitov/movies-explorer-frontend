@@ -1,7 +1,7 @@
 export const filterFilms = (
   films,
   shortDuration,
-  { film: searchQuery, short: isShort }
+  { film: searchQuery, shortFilmCheckbox: isShort }
 ) => {
   return films.filter((film) => {
     const isShortFilm = film.duration <= shortDuration;
@@ -13,3 +13,4 @@ export const filterFilms = (
       : filmName.includes(search);
   });
 };
+ 

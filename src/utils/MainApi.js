@@ -96,18 +96,18 @@ export default class MainApi {
     });
   }
 
-  register(user) {
-    const body = JSON.stringify(user);
+  register({ name, email, password }) {
+    const body = JSON.stringify({ name, email, password });
     return this._fetch("/signup", "POST", body);
   }
 
-  authorize(user) {
-    const body = JSON.stringify(user);
+  authorize({ email, password }) {
+    const body = JSON.stringify({ email, password });
     return this._fetch("/signin", "POST", body);
   }
 
-  editProfile(user, token) {
-    const body = JSON.stringify(user);
+  editProfile(name, email, token) {
+    const body = JSON.stringify(name, email);
     return this._fetch("/users/me", "PATCH", body, token);
   }
 

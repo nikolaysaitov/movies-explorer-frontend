@@ -52,6 +52,7 @@ function MoviesCard({ film, handleLikeSelectButton }) {
                 ? "card-movies__select card-movies__select_active"
                 : "card-movies__select"
             }
+            // style={ {border: "dashed"} }
             type="button"
             onClick={clickSelectButton}
           ></button>

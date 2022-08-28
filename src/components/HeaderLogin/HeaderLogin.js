@@ -13,9 +13,6 @@ function HeaderLogin({ setIsShowMenu }) {
   const isMainPage = currentPath === "/";
   const history = useHistory();
   const { isLoggedIn } = useContext(CurrentUserContext);
-  function handleClick() {
-    history.push("/");
-  }
 
   const signButtons = isLoggedIn ? (
     <AccountButton />
@@ -41,12 +38,9 @@ function HeaderLogin({ setIsShowMenu }) {
     >
       <div className="container header__container">
         <div className="header__box">
-          <img
-            className="logo"
-            src={logo}
-            alt="Логотип"
-            onClick={handleClick}
-          />
+          <Link to="/">
+            <img className="logo" src={logo} alt="Логотип" />
+          </Link>
           {/* {isLoggedIn && <Navigation />} */}
           {signButtons}
           {isLoggedIn && (

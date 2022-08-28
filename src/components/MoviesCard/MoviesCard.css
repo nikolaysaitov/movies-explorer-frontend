@@ -83,3 +83,17 @@
   border-radius: 30px;
   background-color: #f4f4f4;
 }
+
+@media screen and (max-width: 768px) {
+  .saved .card-movies .card-movies__select {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url("../../images/delete.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 30px;
+    background-color: #f4f4f4;
+  }
+}
