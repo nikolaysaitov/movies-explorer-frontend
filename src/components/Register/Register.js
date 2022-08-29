@@ -77,7 +77,7 @@ function Register({ handleRegisterSubmit, isDisabled }) {
           <button
             type="submit"
             className={
-              !isValid ? "form__submit form__submit-off" : "form__submit"
+              (errors.email || errors.name || errors.password) ? "form__submit form__submit-off" : "form__submit"
             }
             disabled={isDisabled}
           >

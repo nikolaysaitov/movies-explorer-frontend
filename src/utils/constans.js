@@ -1,7 +1,7 @@
 const VALIDATION_PARAMS = {
   REGEX: {
     NAME: /^[a-zа-яё-\s]+$/i,
-    EMAIL: /^(|(([A-Za-z0-9]+_+)|([A-Za-z0-9]+\-+)|([A-Za-z0-9]+\.+)|([A-Za-z0-9]+\++))*[A-Za-z0-9]+@((\w+\-+)|(\w+\.))*\w{1,63}\.[a-zA-Z]{2,6})$/i,
+    EMAIL: /^[-\w.]+@([A-z0-9][-A-z0-9]+\.)+[A-z]{2,4}$/,
 
   },
   MESSAGES: {
