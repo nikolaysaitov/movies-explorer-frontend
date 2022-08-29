@@ -1,0 +1,21 @@
+.alarm {
+  position: fixed;
+  background-color: #3456f3;
+  border-radius: 15px;
+  top: 70px;
+  right: 70px;
+  padding: 25px 35px;
+  transition: all 0.6s ease-in;
+  visibility: hidden;
+  opacity: 0;
+  max-width: 300px;
+}
+
+.alarm_active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.alarm__text {
+  color: #fff;
+}

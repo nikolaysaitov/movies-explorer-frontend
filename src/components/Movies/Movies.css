@@ -1,0 +1,36 @@
+.movies {
+  padding-bottom: 80px;
+  background-color: white;
+}
+
+.movies__container {
+  padding: 0 30px;
+}
+
+.movies__more-button {
+  display: block;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid rgba(170, 170, 170, 0.2);
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 11px 0;
+  max-width: 320px;
+  width: 100%;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 768px) {
+  .movies__container {
+    padding: 70px 30px;
+  }
+  .movies {
+    padding-bottom: 30px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .movies__container {
+    padding: 70px 14px;
+  }
+}

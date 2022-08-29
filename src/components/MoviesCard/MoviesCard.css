@@ -1,0 +1,99 @@
+.card-movies {
+  /* box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08); */
+  overflow: hidden;
+  background-color: #ffff;
+}
+
+.card-movies__image {
+  /* background-image: url("../../images/film.jpg"); */
+  height: 236px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.card-movies__description {
+  /* padding: 16px; */
+  padding-bottom: 0px;
+}
+
+.card-movies__rows {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 30px;
+  margin-top: 14px;
+  margin-bottom: 29px;
+}
+
+.card-movies__name {
+  font-family: Inter;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 16px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+.card-movies__select {
+  width: 24px;
+  height: 24px;
+  background-image: url("../../images/save.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  /* background-color: #313131; */
+}
+
+.card-movies__select_active {
+  width: 24px;
+  height: 24px;
+  background-image: url("../../images/save_active.svg");
+}
+
+.card-movies__length {
+  font-size: 11px;
+  color: #8b8b8b;
+  padding-top: 6px;
+  border-top: 1px solid rgba(170, 170, 170, 0.2);
+}
+.card-movies:hover {
+  cursor: pointer;
+  opacity: 0.8;
+}
+
+.saved .card-movies {
+  cursor: pointer;
+}
+
+.saved .card-movies .card-movies__select {
+  /* display: none; */
+}
+
+.saved .card-movies:hover .card-movies__select {
+  display: block;
+  width: 24px;
+  height: 24px;
+  background-image: url("../../images/delete.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border-radius: 30px;
+  background-color: #f4f4f4;
+}
+
+@media screen and (max-width: 768px) {
+  .saved .card-movies .card-movies__select {
+    display: block;
+    width: 24px;
+    height: 24px;
+    background-image: url("../../images/delete.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 30px;
+    background-color: #f4f4f4;
+  }
+}

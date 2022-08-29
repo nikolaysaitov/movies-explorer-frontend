@@ -1,0 +1,18 @@
+.valid-text {
+    font-size: 10px;
+    color: #ee3465;
+}
+
+.valid-text_auth {
+    position: relative;
+    top: -10px;
+}
+
+.valid-text_auth-button {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.valid-text_search {
+    margin-top: 10px;
+}
