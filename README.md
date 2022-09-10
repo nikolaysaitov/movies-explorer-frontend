@@ -1,10 +1,19 @@
 ## [Ссылка на пул-реквест](https://github.com/nikolaysaitov/movies-explorer-frontend/pull/2)
 
+## [Домен Фронтенда heroku.com](https://nikolaysaitovmoviesfrontend.herokuapp.com/)
 
-## [Домен Фронтенда](https://kino.nomoredomains.sbs/)
+## [Домен Бэкенда heroku.com](https://nikolaysaitovmovies.herokuapp.com/)
+
+## [База данных cloud.mongodb.com](https://cloud.mongodb.com/)
 
 
-## [Домен Бэкенда](https://api.kino.nomoredomains.sbs/)
+
+
+
+## [Домен Фронтенда Yandex.Cloud(приостановлен)](https://kino.nomoredomains.sbs/)
+
+
+## [Домен Бэкенда Yandex.Cloud(приостановлен)](https://api.kino.nomoredomains.sbs/)
 
 
 
