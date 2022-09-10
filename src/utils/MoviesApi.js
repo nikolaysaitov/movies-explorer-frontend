@@ -1,10 +1,17 @@
 export const optionsMainApi = {
-  baseUrl: "https://api.kino.nomoredomains.sbs",
+  baseUrl: "https://nikolaysaitovmovies.herokuapp.com",
   // baseUrl: "http://localhost:3000",
   headers: {
     "Content-Type": "application/json",
   },
 };
+// export const optionsMainApi = {
+//   baseUrl: "https://api.kino.nomoredomains.sbs",
+//   // baseUrl: "http://localhost:3000",
+//   headers: {
+//     "Content-Type": "application/json",
+//   },
+// };
 export const optionsMoviesApi = {
   baseUrl: "https://api.nomoreparties.co/beatfilm-movies",
   headers: {
