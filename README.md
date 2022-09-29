@@ -9,7 +9,7 @@
 
 ## [Ссылка на пул-реквест](https://github.com/nikolaysaitov/movies-explorer-frontend/pull/2)
 
-## [Домен Фронтенда heroku.com](https://nikolaysaitovmoviesfrontend.herokuapp.com/)
+## [Домен Фронтенда vercel.com](https://movies-explorer-frontend-ten.vercel.app/)
 
 ## [Домен Бэкенда heroku.com](https://nikolaysaitovmovies.herokuapp.com/)
 
