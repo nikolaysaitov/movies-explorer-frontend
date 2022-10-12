@@ -28,7 +28,7 @@ function Portfolio() {
         <li className="portfolio__item">
           <a
             className="portfolio__link"
-            href="https://movies-explorer-frontend-ten.vercel.app/"
+            href="https://mestoherokufrontend-5t2i.vercel.app/"
             target="_blank"
             rel="noreferrer"
           >
