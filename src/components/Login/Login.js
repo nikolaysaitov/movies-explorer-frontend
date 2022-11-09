@@ -19,7 +19,9 @@ function Login({ handleLoginSubmit, isDisabled }) {
   return (
     <div className="container form__container">
       <div className="form__hello">
-        <img className="form__logo" src={logo} alt="Логотип" />
+      <Link to="/">
+            <img className="form__logo" src={logo} alt="Логотип" />
+          </Link>
         <h1 className="form__header">Рады видеть!</h1>
         <form onSubmit={handleSubmitForm} className="form__register ">
           <p className="form__text">Email</p>

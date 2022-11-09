@@ -8,14 +8,14 @@ function Promo() {
       <div className="container promo__container">
         <div className="promo__text">
           <h1 className="promo__title">
-            Учебный проект студента факультета Веб-разработки.
+          Single Page Application для поиска фильмов.
           </h1>
           <h2 className="promo__subtitle">
             {" "}
             Листайте ниже чтобы узнать больше про этот проект и его создателя.{" "}
           </h2>
-          <Link className="promo__button" to="/">
-            Узнать больше
+          <Link className="promo__button" to="/signup">
+            Приступим!
           </Link>
         </div>
 

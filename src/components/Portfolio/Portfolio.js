@@ -28,7 +28,7 @@ function Portfolio() {
         <li className="portfolio__item">
           <a
             className="portfolio__link"
-            href="https://saitovkms.nomoredomains.xyz/"
+            href="https://mestoherokufrontend-5t2i.vercel.app/"
             target="_blank"
             rel="noreferrer"
           >
