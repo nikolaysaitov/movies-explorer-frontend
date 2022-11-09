@@ -27,7 +27,10 @@ function Register({ handleRegisterSubmit, isDisabled }) {
   return (
     <div className="container form__container">
       <div className="form__hello">
-        <img className="form__logo" src={logo} alt="Логотип" />
+      <Link to="/">
+            <img className="form__logo" src={logo} alt="Логотип" />
+          </Link>
+        {/* <img className="form__logo" src={logo} alt="Логотип" /> */}
         <h1 className="form__header">Добро пожаловать!</h1>
         <form onSubmit={handleSubmit} className="form__register validation={formCallbackValidation}">
           <p className="form__text">Имя</p>
