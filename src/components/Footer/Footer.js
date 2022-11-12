@@ -5,7 +5,7 @@ function Footer() {
     <footer className="footer">
       <div className="container footer__container">
         <p className="footer__text">
-          Учебный проект Яндекс.Практикум х BeatFilm.
+          Pet-project Nikolay Saitov х BeatFilm.
         </p>
         <div className="footer__wrapper">
           <p className="footer__copyright">© 2022. Saitov N.</p>

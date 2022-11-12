@@ -8,7 +8,7 @@ function AboutProject() {
         <div className="project__description">
           <div className="project__description-column">
             <p className="project__description-title">
-              Дипломный проект включал 5 этапов
+              Данный проект включал 5 этапов
             </p>
             <p className="project__description-text">
               Составление плана, работу над бэкендом, вёрстку, добавление
@@ -17,7 +17,7 @@ function AboutProject() {
           </div>
           <div className="project__description-column">
             <p className="project__description-title">
-              На выполнение диплома ушло 5 недель
+              На разработку этого SPA ушло 5 недель
             </p>
             <p className="project__description-text">
               У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было
